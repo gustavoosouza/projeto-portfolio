@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gustavo Oliveira de Souza - Portfólio</title>
+  </head>
+  <body>
+    <!-- ===================== CABEÇALHO / MENU ===================== -->
+    <header id="cabecalho">
+      <h2>Gustavo Oliveira de Souza</h2>
+
+      <!-- Botão que aparece só no celular, controlado pelo JavaScript -->
+      <button id="botao-menu">Menu</button>
+
+      <nav id="menu">
+        <a href="#sobre">Sobre mim</a>
+        <a href="#formacao">Formação</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <link rel="stylesheet" href="style.css" />
+    </header>
+
+    <!-- ===================== SOBRE MIM ===================== -->
+    <section id="sobre">
+      <h1>Olá, eu sou o Gustavo</h1>
+      <h3>Estudante de Análise e Desenvolvimento de Sistemas</h3>
+
+      <p>
+        Sou estudante de Análise e Desenvolvimento de Sistemas na Uninter, com
+        formação prática complementar em Desenvolvimento Full Stack (HTML, CSS,
+        JavaScript e lógica de programação). Tenho facilidade para aprender
+        novas tecnologias e gosto de resolver problemas na prática, construindo
+        projetos próprios para fixar o aprendizado.
+      </p>
+      <p>
+        Antes da transição para tecnologia, atuei em funções administrativas e
+        de supervisão de equipe, o que me deu base sólida em organização,
+        responsabilidade e trabalho em equipe. Hoje busco uma oportunidade de
+        estágio para evoluir tecnicamente e contribuir com uma equipe de
+        desenvolvimento.
+      </p>
+
+      <!-- Botão que troca o tema da página, controlado via JavaScript -->
+      <button id="botao-tema">Ativar tema escuro</button>
+    </section>
+
+    <hr />
+
+    <!-- ===================== FORMAÇÃO ===================== -->
+    <section id="formacao">
+      <h1>Formação e habilidades</h1>
+
+      <h3>Formação acadêmica</h3>
+      <ul>
+        <li>
+          <strong>Técnico em Análise e Desenvolvimento de Sistemas</strong> -
+          Uninter (2025 a 2027, em andamento)
+        </li>
+        <li>
+          <strong>Curso Full Stack</strong> - Hashtag Treinamento (em andamento)
+        </li>
+      </ul>
+
+      <h3>Habilidades técnicas</h3>
+      <ul>
+        <li>HTML5 e CSS3</li>
+        <li>JavaScript</li>
+        <li>Lógica de Programação e Algoritmos</li>
+        <li>Git e GitHub</li>
+        <li>Figma</li>
+      </ul>
+
+      <h3>Ferramentas</h3>
+      <ul>
+        <li>VS Code</li>
+        <li>Figma</li>
+        <li>Pacote Office</li>
+      </ul>
+
+      <h3>Idiomas</h3>
+      <ul>
+        <li>Português - nativo</li>
+        <li>Inglês - intermediário</li>
+      </ul>
+    </section>
+
+    <hr />
+
+    <!-- ===================== PORTFÓLIO ===================== -->
+    <section id="portfolio">
+      <h1>Projetos</h1>
+      <p>
+        Projetos desenvolvidos para praticar lógica de programação, HTML, CSS e
+        JavaScript.
+      </p>
+
+      <!-- Tabela usada para organizar os projetos em linhas e colunas,
+         como visto na Aula Prática 2 (tabelas com th, tr e td) -->
+      <table id="tabela-projetos">
+        <thead>
+          <tr>
+            <th>Projeto</th>
+            <th>Descrição</th>
+            <th>Tecnologias</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Calculadora</td>
+            <td>
+              Aplicação de operações matemáticas básicas, com lógica
+              implementada em JavaScript e interface em HTML/CSS.
+            </td>
+            <td>HTML, CSS, JavaScript</td>
+          </tr>
+          <tr>
+            <td>Jogo da Velha</td>
+            <td>
+              Jogo interativo para dois jogadores com verificação automática de
+              vitória.
+            </td>
+            <td>HTML, CSS, JavaScript</td>
+          </tr>
+          <tr>
+            <td>Super Mario</td>
+            <td>
+              Recriação simplificada do clássico jogo, praticando lógica de
+              movimento e colisão.
+            </td>
+            <td>HTML, CSS, JavaScript</td>
+          </tr>
+          <tr>
+            <td>Recriação da Página da Hashtag</td>
+            <td>
+              Reprodução do layout de uma página real como exercício de HTML/CSS
+              responsivo.
+            </td>
+            <td>HTML, CSS</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Veja os repositórios em:
+        <a href="https://github.com/gustavoosouza" target="_blank"
+          >github.com/gustavoosouza</a
+        >
+      </p>
+    </section>
+
+    <hr />
+
+    <!-- ===================== CONTATO ===================== -->
+    <section id="contato">
+      <h1>Contato</h1>
+
+      <ul>
+        <li>Telefone: (33) 98406-2422</li>
+        <li>E-mail: osouzagustavo@gmail.com</li>
+        <li>Localização: Governador Valadares - MG</li>
+        <li>
+          LinkedIn:
+          <a href="https://linkedin.com/in/gustavoosouzaa/" target="_blank"
+            >linkedin.com/in/gustavoosouzaa</a
+          >
+        </li>
+        <li>
+          GitHub:
+          <a href="https://github.com/gustavoosouza" target="_blank"
+            >github.com/gustavoosouza</a
+          >
+        </li>
+      </ul>
+
+      <!-- Formulário -->
+      <form id="formulario-contato" novalidate>
+        <label for="nome">Nome</label><br />
+        <input
+          type="text"
+          id="nome"
+          placeholder="Seu nome completo"
+        /><br /><br />
+
+        <label for="email">E-mail</label><br />
+        <input type="text" id="email" placeholder="seu@email.com" /><br /><br />
+
+        <label for="mensagem">Mensagem</label><br />
+        <textarea
+          id="mensagem"
+          rows="5"
+          placeholder="Escreva sua mensagem..."
+        ></textarea
+        ><br /><br />
+
+        <button type="submit">Enviar mensagem</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>
+        Gustavo Oliveira de Souza - desenvolvido com HTML5, CSS3 e JavaScript.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

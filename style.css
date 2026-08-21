@@ -1,0 +1,158 @@
+/* Variáveis
+   Guardam as cores principais, para não repetir o código de cor
+   várias vezes e facilitar troca depois. */
+:root {
+  --cor-fundo: #ffffff;
+  --cor-texto: #1a1a2e;
+  --cor-destaque: #3d5afe;
+  --cor-clara: #f2f3f7;
+}
+
+/* Reset simples */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  line-height: 1.6;
+}
+
+/* Cabeçalho */
+#cabecalho {
+  background-color: var(--cor-clara);
+  padding: 15px 20px;
+  border-bottom: 2px solid var(--cor-destaque);
+
+  /* Flexbox: alinha logo, botão e menu numa única linha */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#cabecalho h2 {
+  margin: 0;
+}
+
+/* Menu de navegação */
+#menu {
+  display: flex;
+  gap: 20px;
+}
+
+#menu a {
+  text-decoration: none;
+  color: var(--cor-texto);
+  font-weight: bold;
+}
+
+/* Pseudoclasse :hover: muda a cor do link quando o mouse passa por cima */
+#menu a:hover {
+  color: var(--cor-destaque);
+}
+
+/* Botão do menu mobile: escondido por padrão, aparece só na media query */
+#botao-menu {
+  display: none;
+}
+
+/* Botões */
+button {
+  background-color: var(--cor-destaque);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Pseudoclasse :hover no botão */
+button:hover {
+  background-color: #2b40c9;
+}
+
+/* Seções */
+section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h1 {
+  color: var(--cor-destaque);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+/* Listas */
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* Tabela de projetos */
+#tabela-projetos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#tabela-projetos th,
+#tabela-projetos td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+#tabela-projetos th {
+  background-color: var(--cor-clara);
+}
+
+/* Formulário de contato */
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+}
+
+/* Pseudoclasse: destaca o campo selecionado */
+input:focus,
+textarea:focus {
+  border-color: var(--cor-destaque);
+  outline: none;
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--cor-clara);
+}
+
+/* Media Query */
+@media (max-width: 600px) {
+  #botao-menu {
+    display: block;
+  }
+
+  #menu {
+    display: none; /* começa escondido no celular */
+    flex-direction: column; /* quando aberto, os links ficam empilhados */
+    width: 100%;
+    margin-top: 10px;
+  }
+}
