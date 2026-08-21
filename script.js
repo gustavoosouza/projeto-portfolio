@@ -1,99 +1,162 @@
-/* PORTFÓLIO - GUSTAVO OLIVEIRA DE SOUZA  */
+/* PORTFÓLIO — GUSTAVO OLIVEIRA DE SOUZA */
 
-/* 1. MENU MOBILE*/
-let menuAberto = false;
+document.addEventListener("DOMContentLoaded", () => {
+  /* --- 1. MENU DO CELULAR (abre e fecha ao clicar no botão) --- */
+  const menuToggle = document.getElementById("menu-toggle");
+  const mainNav = document.getElementById("main-nav");
 
-const botaoMenu = document.getElementById("botao-menu");
-const menu = document.getElementById("menu");
+  menuToggle.addEventListener("click", () => {
+    const isOpen = mainNav.classList.toggle("is-open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  });
 
-function alternarMenu() {
-  menuAberto = !menuAberto; // inverte o valor: true vira false, false vira true
+  // Fecha o menu quando o usuário clica em um dos links
+  mainNav.querySelectorAll(".tab").forEach((link) => {
+    link.addEventListener("click", () => {
+      mainNav.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
 
-  if (menuAberto) {
-    menu.style.display = "flex"; // element.style, visto na Aula 6
-  } else {
-    menu.style.display = "none";
-  }
-}
+  /* --- 2. TEMA CLARO / ESCURO --- */
+  const themeToggle = document.getElementById("theme-toggle");
+  const htmlEl = document.documentElement;
 
-botaoMenu.addEventListener("click", alternarMenu);
-
-/* 2. TEMA CLARO / ESCURO */
-let temaEscuroAtivo = false;
-
-const botaoTema = document.getElementById("botao-tema");
-
-function alternarTema() {
-  temaEscuroAtivo = !temaEscuroAtivo;
-
-  if (temaEscuroAtivo) {
-    document.body.style.backgroundColor = "#1a1a2e";
-    document.body.style.color = "#f2f3f7";
-    botaoTema.textContent = "Ativar tema claro";
-  } else {
-    document.body.style.backgroundColor = "#ffffff";
-    document.body.style.color = "#1a1a2e";
-    botaoTema.textContent = "Ativar tema escuro";
-  }
-}
-
-botaoTema.addEventListener("click", alternarTema);
-
-/* 3. FORMULÁRIO DE CONTATO */
-const formulario = document.getElementById("formulario-contato");
-
-function validarEmail(email) {
-  // split("@") divide o texto em pedaços usando "@" como separador.
-  // Um e-mail válido precisa ter exatamente 2 pedaços: "usuario" e "dominio.com"
-  const partes = email.split("@");
-
-  if (partes.length !== 2) {
-    return false;
+  const savedTheme = localStorage.getItem("portfolio-theme");
+  if (savedTheme) {
+    htmlEl.setAttribute("data-theme", savedTheme);
+    themeToggle.setAttribute("aria-pressed", String(savedTheme === "dark"));
   }
 
-  const dominio = partes[1];
+  themeToggle.addEventListener("click", () => {
+    const isDark = htmlEl.getAttribute("data-theme") === "dark";
+    const nextTheme = isDark ? "light" : "dark";
 
-  // o domínio precisa conter um ponto, tipo "gmail.com"
-  if (dominio.indexOf(".") === -1) {
-    return false;
+    if (nextTheme === "light") {
+      htmlEl.removeAttribute("data-theme");
+    } else {
+      htmlEl.setAttribute("data-theme", "dark");
+    }
+
+    localStorage.setItem("portfolio-theme", nextTheme);
+    themeToggle.setAttribute("aria-pressed", String(nextTheme === "dark"));
+  });
+
+  /* --- 3. ABA ATIVA CONFORME A SEÇÃO NA TELA --- */
+  const sections = document.querySelectorAll("main .section");
+  const tabs = document.querySelectorAll(".tab");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          tabs.forEach((tab) => {
+            tab.classList.toggle("is-active", tab.dataset.tab === id);
+          });
+        }
+      });
+    },
+    { rootMargin: "-40% 0px -55% 0px" },
+  ); // considera a seção "ativa" quando ela chega perto do meio da tela
+
+  sections.forEach((section) => observer.observe(section));
+
+  /* --- 4. FORMULÁRIO DE CONTATO --- */
+  const form = document.getElementById("contact-form");
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const messageInput = document.getElementById("message");
+
+  const modal = document.getElementById("confirm-modal");
+  const modalClose = document.getElementById("modal-close");
+
+  // Padrão de texto que confere se o e-mail tem o formato "algo@algo.algo"
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function setFieldError(input, message) {
+    const field = input.closest(".form-field");
+    const errorEl = document.getElementById(`${input.id}-error`);
+    if (message) {
+      field.classList.add("has-error");
+      errorEl.textContent = message;
+    } else {
+      field.classList.remove("has-error");
+      errorEl.textContent = "";
+    }
   }
 
-  return true;
-}
+  function validateForm() {
+    let isValid = true;
 
-function enviarFormulario(evento) {
-  evento.preventDefault(); // impede o recarregamento da página, pois não há servidor
+    // Campo Nome
+    if (nameInput.value.trim() === "") {
+      setFieldError(nameInput, "Por favor, informe seu nome.");
+      isValid = false;
+    } else {
+      setFieldError(nameInput, "");
+    }
 
-  const nome = document.getElementById("nome").value;
-  const email = document.getElementById("email").value;
-  const mensagem = document.getElementById("mensagem").value;
+    // Campo E-mail
+    if (emailInput.value.trim() === "") {
+      setFieldError(emailInput, "Por favor, informe seu e-mail.");
+      isValid = false;
+    } else if (!EMAIL_REGEX.test(emailInput.value.trim())) {
+      setFieldError(
+        emailInput,
+        "Informe um e-mail válido (ex: usuario@dominio.com).",
+      );
+      isValid = false;
+    } else {
+      setFieldError(emailInput, "");
+    }
 
-  // Validação: nome
-  if (nome === "") {
-    alert("Por favor, preencha o campo Nome.");
-    return;
+    // Campo Mensagem
+    if (messageInput.value.trim() === "") {
+      setFieldError(messageInput, "Escreva uma mensagem antes de enviar.");
+      isValid = false;
+    } else {
+      setFieldError(messageInput, "");
+    }
+
+    return isValid;
   }
 
-  // Validação: e-mail
-  if (email === "") {
-    alert("Por favor, preencha o campo E-mail.");
-    return;
+  function openModal() {
+    modal.hidden = false;
+    modalClose.focus();
   }
 
-  if (validarEmail(email) === false) {
-    alert("Por favor, informe um e-mail válido (exemplo: usuario@dominio.com).");
-    return;
+  function closeModal() {
+    modal.hidden = true;
   }
 
-  // Validação: mensagem
-  if (mensagem === "") {
-    alert("Por favor, escreva uma mensagem.");
-    return;
-  }
+  form.addEventListener("submit", (event) => {
+    event.preventDefault(); // impede a página de recarregar
 
-  // Se passou em todas as validações, simula o envio
-  alert("Mensagem enviada com sucesso!");
-  formulario.reset(); // limpa os campos do formulário
-}
+    if (!validateForm()) return;
 
-formulario.addEventListener("submit", enviarFormulario);
+    // Finge que está enviando
+    const submitBtn = form.querySelector(".btn-submit");
+    const btnText = submitBtn.querySelector(".btn-text");
+    const originalText = btnText.textContent;
+
+    submitBtn.disabled = true;
+    btnText.textContent = "Enviando...";
+
+    setTimeout(() => {
+      form.reset();
+      submitBtn.disabled = false;
+      btnText.textContent = originalText;
+      openModal();
+    }, 900);
+  });
+
+  modalClose.addEventListener("click", closeModal);
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) closeModal();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.hidden) closeModal();
+  });
+});

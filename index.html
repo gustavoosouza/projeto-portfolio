@@ -3,206 +3,363 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gustavo Oliveira de Souza - Portfólio</title>
+    <title>Gustavo Oliveira de Souza — Portfólio</title>
+    <meta
+      name="description"
+      content="Portfólio pessoal de Gustavo Oliveira de Souza, estudante de Análise e Desenvolvimento de Sistemas."
+    />
+
+    <!-- Carrega 3 fontes do Google para usar no site -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- ===================== CABEÇALHO / MENU ===================== -->
-    <header id="cabecalho">
-      <h2>Gustavo Oliveira de Souza</h2>
+    <!-- Cabeçalho: fica fixo no topo e é igual em todas as seções -->
+    <header class="topbar">
+      <a href="#sobre" class="brand">
+        <span class="brand-prompt">&gt;_</span> gustavo<span class="brand-dim"
+          >.dev</span
+        >
+      </a>
 
-      <!-- Botão que aparece só no celular, controlado pelo JavaScript -->
-      <button id="botao-menu">Menu</button>
-
-      <nav id="menu">
-        <a href="#sobre">Sobre mim</a>
-        <a href="#formacao">Formação</a>
-        <a href="#portfolio">Portfólio</a>
-        <a href="#contato">Contato</a>
+      <nav class="tabs" id="main-nav" aria-label="Navegação principal">
+        <a href="#sobre" class="tab is-active" data-tab="sobre">
+          <span class="tab-icon">●</span> sobre<span class="tab-ext"></span>
+        </a>
+        <a href="#formacao" class="tab" data-tab="formacao">
+          <span class="tab-icon">●</span> formacao<span class="tab-ext"></span>
+        </a>
+        <a href="#portfolio" class="tab" data-tab="portfolio">
+          <span class="tab-icon">●</span> portfolio<span class="tab-ext"></span>
+        </a>
+        <a href="#contato" class="tab" data-tab="contato">
+          <span class="tab-icon">●</span> contato<span class="tab-ext"></span>
+        </a>
       </nav>
-      <link rel="stylesheet" href="style.css" />
+
+      <div class="topbar-actions">
+        <!-- Botão para trocar entre tema claro e escuro -->
+        <button
+          id="theme-toggle"
+          class="icon-btn"
+          aria-label="Alternar tema claro/escuro"
+          aria-pressed="false"
+        >
+          <span class="theme-icon theme-icon-sun">☀</span>
+          <span class="theme-icon theme-icon-moon">☾</span>
+        </button>
+        <!-- Botão de menu, só aparece no celular -->
+        <button
+          id="menu-toggle"
+          class="icon-btn menu-btn"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span class="bar"></span><span class="bar"></span
+          ><span class="bar"></span>
+        </button>
+      </div>
     </header>
 
-    <!-- ===================== SOBRE MIM ===================== -->
-    <section id="sobre">
-      <h1>Olá, eu sou o Gustavo</h1>
-      <h3>Estudante de Análise e Desenvolvimento de Sistemas</h3>
+    <main>
+      <!-- Seção Sobre mim -->
+      <section id="sobre" class="section hero">
+        <div class="hero-text">
+          <p class="eyebrow">// apresentação</p>
+          <h1>Gustavo Oliveira<br />de Souza</h1>
+          <p class="hero-role">
+            Estudante de Análise e Desenvolvimento de Sistemas
+          </p>
+          <p class="hero-desc">
+            Estudante de Análise e Desenvolvimento de Sistemas, com formação
+            prática complementar em Desenvolvimento Full Stack (HTML, CSS,
+            JavaScript e lógica de programação). Tenho facilidade para aprender
+            novas tecnologias e gosto de resolver problemas na prática,
+            construindo projetos próprios para fixar o aprendizado.
+          </p>
+          <p class="hero-desc">
+            Antes da transição para tecnologia, atuei em funções administrativas
+            e de supervisão de equipe, o que me deu base sólida em organização,
+            responsabilidade e trabalho em equipe. Hoje busco uma oportunidade
+            de estágio para evoluir tecnicamente e contribuir com uma equipe de
+            desenvolvimento.
+          </p>
+        </div>
+      </section>
 
-      <p>
-        Sou estudante de Análise e Desenvolvimento de Sistemas na Uninter, com
-        formação prática complementar em Desenvolvimento Full Stack (HTML, CSS,
-        JavaScript e lógica de programação). Tenho facilidade para aprender
-        novas tecnologias e gosto de resolver problemas na prática, construindo
-        projetos próprios para fixar o aprendizado.
-      </p>
-      <p>
-        Antes da transição para tecnologia, atuei em funções administrativas e
-        de supervisão de equipe, o que me deu base sólida em organização,
-        responsabilidade e trabalho em equipe. Hoje busco uma oportunidade de
-        estágio para evoluir tecnicamente e contribuir com uma equipe de
-        desenvolvimento.
-      </p>
+      <!-- Seção Formação -->
+      <section id="formacao" class="section">
+        <p class="eyebrow">// formacao</p>
+        <h2>Formação &amp; habilidades</h2>
 
-      <!-- Botão que troca o tema da página, controlado via JavaScript -->
-      <button id="botao-tema">Ativar tema escuro</button>
-    </section>
+        <div class="formacao-grid">
+          <!-- Formação acadêmica -->
+          <div class="timeline">
+            <article class="timeline-item">
+              <div>
+                <h3>Técnico em Análise e Desenvolvimento de Sistemas</h3>
+                <p class="muted">
+                  Uninter — 2025 a 2027
+                  <span class="badge badge-progress">em andamento</span>
+                </p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div>
+                <h3>Curso Full Stack</h3>
+                <p class="muted">
+                  Hashtag Treinamento
+                  <span class="badge badge-progress">em andamento</span>
+                </p>
+                <p class="muted">
+                  Formação prática complementar em HTML, CSS, JavaScript e
+                  lógica de programação.
+                </p>
+              </div>
+            </article>
+          </div>
 
-    <hr />
+          <!-- Habilidades, ferramentas e idiomas -->
+          <div class="skills">
+            <div class="skills-block">
+              <h3>Habilidades técnicas</h3>
+              <ul class="tag-list">
+                <li>HTML5 &amp; CSS3</li>
+                <li>JavaScript</li>
+                <li>Lógica de Programação e Algoritmos</li>
+                <li>Git &amp; GitHub</li>
+                <li>Figma</li>
+              </ul>
+            </div>
+            <div class="skills-block">
+              <h3>Ferramentas</h3>
+              <ul class="tag-list">
+                <li>VS Code</li>
+                <li>Figma</li>
+                <li>Pacote Office</li>
+              </ul>
+            </div>
+            <div class="skills-block">
+              <h3>Idiomas</h3>
+              <ul class="tag-list">
+                <li>Português — nativo</li>
+                <li>Inglês — intermediário</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <!-- ===================== FORMAÇÃO ===================== -->
-    <section id="formacao">
-      <h1>Formação e habilidades</h1>
+      <!-- Seção Portfólio -->
+      <section id="portfolio" class="section">
+        <p class="eyebrow">// portfolio</p>
+        <h2>Projetos</h2>
+        <p class="section-lead">
+          Projetos desenvolvidos para praticar lógica de programação, HTML, CSS
+          e JavaScript. Os links abaixo apontam para o meu GitHub — substitua
+          pelos repositórios de cada projeto conforme forem publicados.
+        </p>
 
-      <h3>Formação acadêmica</h3>
-      <ul>
-        <li>
-          <strong>Técnico em Análise e Desenvolvimento de Sistemas</strong> -
-          Uninter (2025 a 2027, em andamento)
-        </li>
-        <li>
-          <strong>Curso Full Stack</strong> - Hashtag Treinamento (em andamento)
-        </li>
-      </ul>
-
-      <h3>Habilidades técnicas</h3>
-      <ul>
-        <li>HTML5 e CSS3</li>
-        <li>JavaScript</li>
-        <li>Lógica de Programação e Algoritmos</li>
-        <li>Git e GitHub</li>
-        <li>Figma</li>
-      </ul>
-
-      <h3>Ferramentas</h3>
-      <ul>
-        <li>VS Code</li>
-        <li>Figma</li>
-        <li>Pacote Office</li>
-      </ul>
-
-      <h3>Idiomas</h3>
-      <ul>
-        <li>Português - nativo</li>
-        <li>Inglês - intermediário</li>
-      </ul>
-    </section>
-
-    <hr />
-
-    <!-- ===================== PORTFÓLIO ===================== -->
-    <section id="portfolio">
-      <h1>Projetos</h1>
-      <p>
-        Projetos desenvolvidos para praticar lógica de programação, HTML, CSS e
-        JavaScript.
-      </p>
-
-      <!-- Tabela usada para organizar os projetos em linhas e colunas,
-         como visto na Aula Prática 2 (tabelas com th, tr e td) -->
-      <table id="tabela-projetos">
-        <thead>
-          <tr>
-            <th>Projeto</th>
-            <th>Descrição</th>
-            <th>Tecnologias</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Calculadora</td>
-            <td>
+        <div class="project-grid">
+          <article class="project-card">
+            <p class="project-index">01</p>
+            <h3>Calculadora</h3>
+            <p>
               Aplicação de operações matemáticas básicas, com lógica
               implementada em JavaScript e interface em HTML/CSS.
-            </td>
-            <td>HTML, CSS, JavaScript</td>
-          </tr>
-          <tr>
-            <td>Jogo da Velha</td>
-            <td>
+            </p>
+            <div class="project-tags">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+            <a
+              href="https://github.com/gustavoosouza"
+              class="project-link"
+              target="_blank"
+              rel="noopener"
+              >Ver repositório ↗</a
+            >
+          </article>
+
+          <article class="project-card">
+            <p class="project-index">02</p>
+            <h3>Jogo da Velha</h3>
+            <p>
               Jogo interativo para dois jogadores com verificação automática de
-              vitória.
-            </td>
-            <td>HTML, CSS, JavaScript</td>
-          </tr>
-          <tr>
-            <td>Super Mario</td>
-            <td>
+              vitória, desenvolvido em HTML, CSS e JavaScript.
+            </p>
+            <div class="project-tags">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+            <a
+              href="https://github.com/gustavoosouza"
+              class="project-link"
+              target="_blank"
+              rel="noopener"
+              >Ver repositório ↗</a
+            >
+          </article>
+
+          <article class="project-card">
+            <p class="project-index">03</p>
+            <h3>Super Mario</h3>
+            <p>
               Recriação simplificada do clássico jogo, praticando lógica de
-              movimento e colisão.
-            </td>
-            <td>HTML, CSS, JavaScript</td>
-          </tr>
-          <tr>
-            <td>Recriação da Página da Hashtag</td>
-            <td>
+              movimento e colisão em JavaScript.
+            </p>
+            <div class="project-tags">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+            <a
+              href="https://github.com/gustavoosouza"
+              class="project-link"
+              target="_blank"
+              rel="noopener"
+              >Ver repositório ↗</a
+            >
+          </article>
+
+          <article class="project-card">
+            <p class="project-index">04</p>
+            <h3>Recriação da Página da Hashtag</h3>
+            <p>
               Reprodução do layout de uma página real como exercício de HTML/CSS
-              responsivo.
-            </td>
-            <td>HTML, CSS</td>
-          </tr>
-        </tbody>
-      </table>
+              responsivo (curso em andamento).
+            </p>
+            <div class="project-tags">
+              <span>HTML</span><span>CSS</span><span>Responsivo</span>
+            </div>
+            <a
+              href="https://github.com/gustavoosouza"
+              class="project-link"
+              target="_blank"
+              rel="noopener"
+              >Ver repositório ↗</a
+            >
+          </article>
+        </div>
+      </section>
 
+      <!-- Seção Contato -->
+      <section id="contato" class="section">
+        <p class="eyebrow">// contato</p>
+        <h2>Contato</h2>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p class="section-lead">
+              Vamos conversar sobre oportunidades de estágio ou projetos.
+            </p>
+            <ul class="contact-list">
+              <li>
+                <span class="contact-label">Telefone</span>
+                <a href="tel:+5533984062422">(33) 98406-2422</a>
+              </li>
+              <li>
+                <span class="contact-label">E-mail</span>
+                <a href="mailto:osouzagustavo@gmail.com"
+                  >osouzagustavo@gmail.com</a
+                >
+              </li>
+              <li>
+                <span class="contact-label">Localização</span>
+                <span>Governador Valadares — MG</span>
+              </li>
+              <li>
+                <span class="contact-label">LinkedIn</span>
+                <a
+                  href="https://linkedin.com/in/gustavoosouzaa/"
+                  target="_blank"
+                  rel="noopener"
+                  >linkedin.com/in/gustavoosouzaa</a
+                >
+              </li>
+              <li>
+                <span class="contact-label">GitHub</span>
+                <a
+                  href="https://github.com/gustavoosouza"
+                  target="_blank"
+                  rel="noopener"
+                  >github.com/gustavoosouza</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Formulário de contato, validado pelo JavaScript -->
+          <form id="contact-form" class="contact-form" novalidate>
+            <div class="form-field">
+              <label for="name">Nome</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Seu nome completo"
+                autocomplete="name"
+              />
+              <span class="field-error" id="name-error"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="email">E-mail</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="seu@email.com"
+                autocomplete="email"
+              />
+              <span class="field-error" id="email-error"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="message">Mensagem</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Escreva sua mensagem..."
+              ></textarea>
+              <span class="field-error" id="message-error"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-submit">
+              <span class="btn-text">Enviar mensagem</span>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
       <p>
-        Veja os repositórios em:
-        <a href="https://github.com/gustavoosouza" target="_blank"
-          >github.com/gustavoosouza</a
-        >
-      </p>
-    </section>
-
-    <hr />
-
-    <!-- ===================== CONTATO ===================== -->
-    <section id="contato">
-      <h1>Contato</h1>
-
-      <ul>
-        <li>Telefone: (33) 98406-2422</li>
-        <li>E-mail: osouzagustavo@gmail.com</li>
-        <li>Localização: Governador Valadares - MG</li>
-        <li>
-          LinkedIn:
-          <a href="https://linkedin.com/in/gustavoosouzaa/" target="_blank"
-            >linkedin.com/in/gustavoosouzaa</a
-          >
-        </li>
-        <li>
-          GitHub:
-          <a href="https://github.com/gustavoosouza" target="_blank"
-            >github.com/gustavoosouza</a
-          >
-        </li>
-      </ul>
-
-      <!-- Formulário -->
-      <form id="formulario-contato" novalidate>
-        <label for="nome">Nome</label><br />
-        <input
-          type="text"
-          id="nome"
-          placeholder="Seu nome completo"
-        /><br /><br />
-
-        <label for="email">E-mail</label><br />
-        <input type="text" id="email" placeholder="seu@email.com" /><br /><br />
-
-        <label for="mensagem">Mensagem</label><br />
-        <textarea
-          id="mensagem"
-          rows="5"
-          placeholder="Escreva sua mensagem..."
-        ></textarea
-        ><br /><br />
-
-        <button type="submit">Enviar mensagem</button>
-      </form>
-    </section>
-
-    <footer>
-      <p>
-        Gustavo Oliveira de Souza - desenvolvido com HTML5, CSS3 e JavaScript.
+        Gustavo Oliveira de Souza — desenvolvido com HTML5, CSS3 e JavaScript
+        puros.
       </p>
     </footer>
+
+    <!-- Mensagem que aparece quando o formulário é enviado com sucesso -->
+    <div
+      id="confirm-modal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      hidden
+    >
+      <div class="modal-box">
+        <p class="modal-icon">✔</p>
+        <h3 id="modal-title">Mensagem enviada com sucesso!</h3>
+        <p>Obrigado pelo contato, Gustavo responderá em breve.</p>
+        <button id="modal-close" class="btn btn-primary">Fechar</button>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
